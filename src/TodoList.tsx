@@ -3,15 +3,15 @@ import TodoListHeader from "./TodoListHeader";
 import Button from "./Button";
 import TodoListInput from "./TodoListInput";
 
-type TodoListPropsType = {
-    title: string,
-    tasks: Array<TaskType>
-}
-
 export type TaskType = {
     id: number,
     title: string,
     isDone: boolean,
+}
+
+type TodoListPropsType = {
+    title: string,
+    tasks: Array<TaskType>
 }
 
 export const tasks_1: Array<TaskType> = [
@@ -19,6 +19,17 @@ export const tasks_1: Array<TaskType> = [
     {id: 2, title: "JS", isDone: true},
     {id: 3, title: "React", isDone: false},
 ]
+export const tasks_2: Array<TaskType> = [
+    {id: 1, title: "Hello world", isDone: true},
+    {id: 2, title: "Iam happy", isDone: true},
+    {id: 3, title: "Yo", isDone: false},
+]
+export const tasks_3: Array<TaskType> = [
+    {id: 1, title: "Pushkin", isDone: true},
+    {id: 2, title: "Gogol", isDone: true},
+    {id: 3, title: "Lermontov", isDone: false},
+]
+
 const TodoList = (props: TodoListPropsType) => {
 
 

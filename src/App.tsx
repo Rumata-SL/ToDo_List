@@ -2,18 +2,16 @@ import React from 'react';
 import './App.css';
 import TodoList from "./TodoList";
 import {tasks_1} from "./TodoList";
+import {tasks_2} from "./TodoList";
+import {tasks_3} from "./TodoList";
 
 
 function App() {
-    const todolistTitle_1: string = "What to learn";
-    const todolistTitle_2: string = "What to buy";
-    const todolistTitle_3: string = "What to read";
-
     return (
         <div className="App">
-            <TodoList title={todolistTitle_1} tasks={tasks_1}/>
-            <TodoList title={todolistTitle_2} tasks={tasks_1}/>
-            <TodoList title={todolistTitle_3} tasks={tasks_1}/>
+            <TodoList title={"What to learn"} tasks={tasks_1}/>
+            <TodoList title={"What to buy"} tasks={tasks_2}/>
+            <TodoList title={"What to read"} tasks={tasks_3}/>
         </div>
     );
 }
