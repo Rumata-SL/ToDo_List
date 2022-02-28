@@ -8,5 +8,4 @@ const Button = (props: ButtonPropsType) => {
         <button>{props.title}</button>
     );
 };
-
 export default Button;
