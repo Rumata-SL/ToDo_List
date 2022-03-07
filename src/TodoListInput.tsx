@@ -1,26 +1,29 @@
-import React from 'react';
+import React, {FC} from "react";
 import {TaskType} from "./TodoList";
 
-type TodoListInputProps = {
+type TodoListInputProps  = {
     tasks: Array<TaskType>
 }
 
-const TodoListInput = (props: TodoListInputProps) => {
+const TodoListInput: FC<TodoListInputProps> = (
+    {
+        tasks,
+    }
+) => {
+
+    const tasksJSXElements = tasks.map(t =>{
+        return (
+            <li>
+            <input type="checkbox" checked={t.isDone}/>
+            <span>{t.title}</span>
+        </li>
+        )
+    })
+
     return (
         <div>
             <ul>
-                <li>
-                    <input type="checkbox" checked={props.tasks[0].isDone}/>
-                    <span>{props.tasks[0].title}</span>
-                </li>
-                <li>
-                    <input type="checkbox" checked={props.tasks[1].isDone}/>
-                    <span>{props.tasks[1].title}</span>
-                </li>
-                <li>
-                    <input type="checkbox" checked={props.tasks[2].isDone}/>
-                    <span>{props.tasks[2].title}</span>
-                </li>
+                {tasksJSXElements}
             </ul>
         </div>
     );
