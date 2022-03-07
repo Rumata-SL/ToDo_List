@@ -26,7 +26,7 @@ const TodoList = (props: TodoListPropsType) => {
                 <TodoListHeader title={props.title}/>
                 <div>
                     <input/>
-                    <Button title={"+"} callback={()=>{}}/>
+                    <Button title={"added"} callback={()=>{}}/>
                 </div>
 
                 < TasksList tasks={props.tasks} removeTask={props.removeTask}/>
