@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-type TodoListHeaderPropsType= {
-    title:string
+type TodoListHeaderPropsType = {
+    title: string
 }
 const TodoListHeader = (props: TodoListHeaderPropsType) => {
     return (

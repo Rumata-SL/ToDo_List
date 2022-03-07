@@ -1,7 +1,8 @@
 import React, {FC} from "react";
 import {TaskType} from "./TodoList";
+import Button from "./Button";
 
-type TodoListInputProps  = {
+type TodoListInputProps = {
     tasks: Array<TaskType>
     removeTask: (id: number) => void
 }
@@ -13,13 +14,15 @@ const TasksList: FC<TodoListInputProps> = (
     }
 ) => {
 
-    const tasksJSXElements = tasks.map(t =>{
+    const tasksJSXElements = tasks.map(t => {
+        const onClickRemoveTask = () => removeTask(t.id)
         return (
             <li key={t.id}>
-            <input type="checkbox" checked={t.isDone}/>
-            <span>{t.title}</span>
-                <button onClick={()=>removeTask(t.id)}>X</button>
-        </li>
+                <input type="checkbox" checked={t.isDone}/>
+                <span>{t.title}</span>
+                <Button title={"X"} callback={onClickRemoveTask}/>
+                {/*<button onClick={() => removeTask(t.id)}>X</button>*/}
+            </li>
         )
     })
 

@@ -17,8 +17,6 @@ type TodoListPropsType = {
 
 }
 
-
-
 const TodoList = (props: TodoListPropsType) => {
 
 
@@ -28,15 +26,15 @@ const TodoList = (props: TodoListPropsType) => {
                 <TodoListHeader title={props.title}/>
                 <div>
                     <input/>
-                    <button>+</button>
+                    <Button title={"+"} callback={()=>{}}/>
                 </div>
 
                 < TasksList tasks={props.tasks} removeTask={props.removeTask}/>
 
                 <div>
-                    <Button title={"All"}/>
-                    <Button title={"Active"}/>
-                    <Button title={"Completed"}/>
+                    <Button title={"All"} callback={()=>{}}/>
+                    <Button title={"Active"} callback={()=>{}}/>
+                    <Button title={"Completed"} callback={()=>{}}/>
                 </div>
             </div>
         </div>
