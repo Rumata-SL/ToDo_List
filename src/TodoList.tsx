@@ -1,7 +1,8 @@
 import React from "react";
 import TodoListHeader from "./TodoListHeader";
 import Button from "./Button";
-import TodoListInput from "./TodoListInput";
+import TasksList from "./TasksList";
+
 
 export type TaskType = {
     id: number,
@@ -12,23 +13,11 @@ export type TaskType = {
 type TodoListPropsType = {
     title: string,
     tasks: Array<TaskType>
+    removeTask: (id: number) => void
+
 }
 
-export const tasks_1: Array<TaskType> = [
-    {id: 1, title: "HTML&CSS", isDone: true},
-    {id: 2, title: "JS", isDone: true},
-    {id: 3, title: "React", isDone: false},
-]
-export const tasks_2: Array<TaskType> = [
-    {id: 1, title: "Hello world", isDone: true},
-    {id: 2, title: "Iam happy", isDone: true},
-    {id: 3, title: "Yo", isDone: false},
-]
-export const tasks_3: Array<TaskType> = [
-    {id: 1, title: "Pushkin", isDone: true},
-    {id: 2, title: "Gogol", isDone: true},
-    {id: 3, title: "Lermontov", isDone: false},
-]
+
 
 const TodoList = (props: TodoListPropsType) => {
 
@@ -42,7 +31,7 @@ const TodoList = (props: TodoListPropsType) => {
                     <button>+</button>
                 </div>
 
-                < TodoListInput tasks={props.tasks}/>
+                < TasksList tasks={props.tasks} removeTask={props.removeTask}/>
 
                 <div>
                     <Button title={"All"}/>

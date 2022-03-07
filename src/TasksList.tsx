@@ -3,19 +3,22 @@ import {TaskType} from "./TodoList";
 
 type TodoListInputProps  = {
     tasks: Array<TaskType>
+    removeTask: (id: number) => void
 }
 
-const TodoListInput: FC<TodoListInputProps> = (
+const TasksList: FC<TodoListInputProps> = (
     {
         tasks,
+        removeTask
     }
 ) => {
 
     const tasksJSXElements = tasks.map(t =>{
         return (
-            <li>
+            <li key={t.id}>
             <input type="checkbox" checked={t.isDone}/>
             <span>{t.title}</span>
+                <button onClick={()=>removeTask(t.id)}>X</button>
         </li>
         )
     })
@@ -29,4 +32,4 @@ const TodoListInput: FC<TodoListInputProps> = (
     );
 };
 
-export default TodoListInput;
+export default TasksList;
