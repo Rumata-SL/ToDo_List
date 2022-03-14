@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import TodoListHeader from "./TodoListHeader";
 import Button from "./Button";
 import TasksList from "./TasksList";
-import {FilterValueType} from "./App";
+import {FilterValuesType} from "./App";
 // import Input from "./Input";
 
 
@@ -16,7 +16,7 @@ type TodoListPropsType = {
     title: string,
     tasks: Array<TaskType>
     removeTask: (id: string) => void
-    changeFilter: (value: FilterValueType) => void
+    changeFilter: (value: FilterValuesType) => void
     addTask: (title: string) => void
 
 }
@@ -42,9 +42,9 @@ const TodoList = (props: TodoListPropsType) => {
                                 addTask()
                             }
                         }
-                    }
+                        }
                     />
-                    <Button title={"added"} callback={addTask}/>
+                    <Button title={"+"} callback={addTask}/>
                 </div>
 
                 < TasksList tasks={props.tasks} removeTask={props.removeTask}/>

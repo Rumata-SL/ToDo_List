@@ -3,9 +3,7 @@ import "./App.css";
 import TodoList, {TaskType} from "./TodoList";
 import {v1} from "uuid";
 
-
-export type FilterValueType = "all" | "active" | "completed";
-
+export type FilterValuesType = "all" | "active" | "completed";
 
 function App() {
 
@@ -16,7 +14,7 @@ function App() {
         {id: v1(), title: "Redux", isDone: false},
     ])
 
-    const [filter, setFilter] = useState<FilterValueType>("all");
+    const [filter, setFilter] = useState<FilterValuesType>("all");
 
     const removeTask = ((id: string) => {
         const filteredTasks = tasks.filter(t => t.id !== id)
@@ -33,18 +31,27 @@ function App() {
         setTask([newTask, ...tasks])
     }
 
-
-    const changeFilter = (value: FilterValueType) => {
+    const changeFilter = (value: FilterValuesType) => {
         setFilter(value)
     }
-    let tasksForTodoList = tasks;
-    if (filter === "completed") {
-        tasksForTodoList = tasks.filter(t => t.isDone === true);
-    }
+    let tasksForTodoList;
 
-    if (filter === "active") {
-        tasksForTodoList = tasks.filter(t => t.isDone === false);
+    switch (filter) {
+        case "active":
+            tasksForTodoList = tasks.filter(t => t.isDone === false);
+            break
+        case "completed":
+            tasksForTodoList = tasks.filter(t => t.isDone === true);
+            break
+        default:
+            tasksForTodoList = tasks;
+
     }
+    /*if (filter === "completed") {
+        tasksForTodoList = tasks.filter(t => t.isDone === true);
+    }else if(filter === "active") {
+        tasksForTodoList = tasks.filter(t => t.isDone === false);
+    }*/
 
     return (
         <div className="App">
