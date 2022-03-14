@@ -6,9 +6,9 @@ import {v1} from "uuid";
 
 export type FilterValueType = "all" | "active" | "completed";
 
+
 function App() {
 
-    console.log(typeof (v1()))
     const [tasks, setTask] = useState<Array<TaskType>>([
         {id: v1(), title: "HTML&CSS", isDone: true},
         {id: v1(), title: "JS", isDone: true},
@@ -26,7 +26,7 @@ function App() {
     const addTask = (title: string) => {
         const newTask: TaskType = {
             id: v1(),
-            title: title,
+            title,
             isDone: false
         }
 
