@@ -4,7 +4,7 @@ import Button from "./Button";
 
 type TodoListInputProps = {
     tasks: Array<TaskType>
-    removeTask: (id: number) => void
+    removeTask: (id: string) => void
 }
 
 const TasksList: FC<TodoListInputProps> = (
