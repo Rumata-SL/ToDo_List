@@ -1,7 +1,8 @@
 import React from "react";
+
 type InputTypeProps={
-    value: string
-    onChange: ()=> void
+    setTitle:(title: string)=>void
+    title: string
 }
 const Input = (props:InputTypeProps) => {
 

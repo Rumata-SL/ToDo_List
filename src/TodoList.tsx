@@ -33,7 +33,7 @@ const TodoList = (props: TodoListPropsType) => {
             <div>
                 <TodoListHeader title={props.title}/>
                 <div>
-                    {/*<Input/>*/}
+                    {/*<Input />*/}
                     <input
                         value={title}
                         onChange={(e) => setTitle(e.currentTarget.value)}
