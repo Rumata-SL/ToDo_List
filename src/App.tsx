@@ -34,8 +34,16 @@ function App() {
     const changeFilter = (value: FilterValuesType) => {
         setFilter(value)
     }
-    let tasksForTodoList;
 
+ const changeStatus = (taskId: string, isDone: boolean)=> {
+        let task = tasks.find(t => t.id === taskId);
+         if(task){
+        task.isDone = !task.isDone
+         }
+         setTask(tasks);
+    }
+
+    let tasksForTodoList;
     switch (filter) {
         case "active":
             tasksForTodoList = tasks.filter(t => !t.isDone);

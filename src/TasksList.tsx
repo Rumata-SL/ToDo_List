@@ -21,7 +21,7 @@ const TasksList: FC<TodoListInputProps> = (
                 <input type="checkbox" checked={t.isDone}/>
                 <span>{t.title}</span>
                 <Button title={"X"} callback={onClickRemoveTask}/>
-                {/*<button onClick={() => removeTask(t.id)}>X</button>*/}
+
             </li>
         )
     })
