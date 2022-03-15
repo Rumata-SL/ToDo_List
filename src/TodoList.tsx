@@ -18,6 +18,7 @@ type TodoListPropsType = {
     removeTask: (id: string) => void
     changeFilter: (value: FilterValuesType) => void
     addTask: (title: string) => void
+    changeStatus: (taskId: string, isDone: boolean) => void
 
 }
 
@@ -47,7 +48,7 @@ const TodoList = (props: TodoListPropsType) => {
                     <Button title={"+"} callback={addTask}/>
                 </div>
 
-                < TasksList tasks={props.tasks} removeTask={props.removeTask}/>
+                < TasksList tasks={props.tasks} removeTask={props.removeTask} changeStatus={props.changeStatus}/>
 
                 <div>
                     <Button title={"All"} callback={() => {

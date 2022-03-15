@@ -40,7 +40,7 @@ function App() {
          if(task){
         task.isDone = !task.isDone
          }
-         setTask(tasks);
+         setTask([...tasks]);
     }
 
     let tasksForTodoList;
@@ -69,6 +69,7 @@ function App() {
                 removeTask={removeTask}
                 changeFilter={changeFilter}
                 addTask={addTask}
+                changeStatus={changeStatus}
             />
         </div>
     );
