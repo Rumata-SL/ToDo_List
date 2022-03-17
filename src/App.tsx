@@ -35,7 +35,7 @@ function App() {
         setFilter(value)
     }
 
- const changeStatus = (taskId: string, isDone: boolean)=> {
+ const changeStatus = (taskId: string)=> {
         let task = tasks.find(t => t.id === taskId);
          if(task){
         task.isDone = !task.isDone

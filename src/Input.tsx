@@ -1,8 +1,9 @@
 import React from "react";
 
 type InputTypeProps={
-    setTitle:(title: string)=>void
     title: string
+    setTitle:(title: string)=>void
+    addTask?:(title:string)=>void
 }
 const Input = (props:InputTypeProps) => {
 
