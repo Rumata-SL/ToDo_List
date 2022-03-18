@@ -35,12 +35,12 @@ function App() {
         setFilter(value)
     }
 
- const changeStatus = (taskId: string)=> {
+    const changeStatus = (taskId: string) => {
         let task = tasks.find(t => t.id === taskId);
-         if(task){
-        task.isDone = !task.isDone
-         }
-         setTask([...tasks]);
+        if (task) {
+            task.isDone = !task.isDone
+        }
+        setTask([...tasks]);
     }
 
     let tasksForTodoList;
@@ -53,8 +53,8 @@ function App() {
             break
         default:
             tasksForTodoList = tasks;
-
     }
+
     /*if (filter === "completed") {
         tasksForTodoList = tasks.filter(t => t.isDone === true);
     }else if(filter === "active") {

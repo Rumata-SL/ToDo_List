@@ -3,7 +3,7 @@ import TodoListHeader from "./TodoListHeader";
 import Button from "./Button";
 import TasksList from "./TasksList";
 import {FilterValuesType} from "./App";
-// import Input from "./Input";
+import Input from "./Input";
 
 
 export type TaskType = {
@@ -23,28 +23,30 @@ type TodoListPropsType = {
 }
 
 const TodoList = (props: TodoListPropsType) => {
+
     const [title, setTitle] = useState<string>("")
+
     const addTask = () => {
         props.addTask(title)
         setTitle("")
     }
-    // const onKeyPressAddTask
+
     return (
         <div>
             <div>
                 <TodoListHeader title={props.title}/>
                 <div>
-                    {/*<Input />*/}
-                    <input
+                    <Input title={title} setTitle={setTitle} callback={addTask}/>
+                    {/*<input
                         value={title}
                         onChange={(e) => setTitle(e.currentTarget.value)}
                         onKeyPress={(e) => {
                             if (e.key === "Enter") {
-                                addTask()
+                                addTask();
                             }
                         }
                         }
-                    />
+                    />*/}
                     <Button title={"+"} callback={addTask}/>
                 </div>
 
