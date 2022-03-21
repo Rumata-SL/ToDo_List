@@ -16,15 +16,15 @@ const TasksList: FC<TodoListInputProps> = (
     }
 ) => {
 
+
     const tasksJSXElements = tasks.map(t => {
         const onClickRemoveTask = () => removeTask(t.id)
-        const onChangeHandler = (e: ChangeEvent<HTMLInputElement>)=> changeStatus(t.id, e.currentTarget.checked)
+        const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => changeStatus(t.id, e.currentTarget.checked)
         return (
             <li key={t.id}>
                 <input type="checkbox" checked={t.isDone} onChange={onChangeHandler}/>
                 <span>{t.title}</span>
                 <Button title={"X"} callback={onClickRemoveTask}/>
-
             </li>
         )
     })

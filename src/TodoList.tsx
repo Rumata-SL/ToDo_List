@@ -25,9 +25,15 @@ type TodoListPropsType = {
 const TodoList = (props: TodoListPropsType) => {
 
     const [title, setTitle] = useState<string>("")
+    const [error, setError] = useState<boolean>(false)
 
     const addTask = () => {
-        props.addTask(title)
+        const trimAddTitle = title.trim()
+        if (trimAddTitle) {
+            props.addTask(trimAddTitle)
+        } else {
+            setError(true)
+        }
         setTitle("")
     }
 
@@ -36,32 +42,45 @@ const TodoList = (props: TodoListPropsType) => {
             <div>
                 <TodoListHeader title={props.title}/>
                 <div>
-                    <Input title={title} setTitle={setTitle} callback={addTask}/>
-                    {/*<input
-                        value={title}
-                        onChange={(e) => setTitle(e.currentTarget.value)}
-                        onKeyPress={(e) => {
-                            if (e.key === "Enter") {
-                                addTask();
-                            }
-                        }
-                        }
-                    />*/}
-                    <Button title={"+"} callback={addTask}/>
+                    <Input
+                        error={error}
+                        title={title}
+                        setTitle={setTitle}
+                        callback={addTask}
+                        setError={setError}
+                    />
+                    <Button
+                        title={"+"}
+                        callback={addTask}
+                    />
+                    {error && <div className={"errorMessage"}>Title to required</div>}
                 </div>
 
-                < TasksList tasks={props.tasks} removeTask={props.removeTask} changeStatus={props.changeStatus}/>
+                < TasksList
+                    tasks={props.tasks}
+                    removeTask={props.removeTask}
+                    changeStatus={props.changeStatus}
+                />
 
                 <div>
-                    <Button title={"All"} callback={() => {
-                        props.changeFilter("all")
-                    }}/>
-                    <Button title={"Active"} callback={() => {
-                        props.changeFilter("active")
-                    }}/>
-                    <Button title={"Completed"} callback={() => {
-                        props.changeFilter("completed")
-                    }}/>
+                    <Button
+                        title={"All"}
+                        callback={() => {
+                            props.changeFilter("all")
+                        }}
+                    />
+                    <Button
+                        title={"Active"}
+                        callback={() => {
+                            props.changeFilter("active")
+                        }}
+                    />
+                    <Button
+                        title={"Completed"}
+                        callback={() => {
+                            props.changeFilter("completed")
+                        }}
+                    />
                 </div>
             </div>
         </div>

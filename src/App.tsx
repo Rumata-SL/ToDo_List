@@ -55,12 +55,6 @@ function App() {
             tasksForTodoList = tasks;
     }
 
-    /*if (filter === "completed") {
-        tasksForTodoList = tasks.filter(t => t.isDone === true);
-    }else if(filter === "active") {
-        tasksForTodoList = tasks.filter(t => t.isDone === false);
-    }*/
-
     return (
         <div className="App">
             <TodoList
