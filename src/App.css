@@ -12,3 +12,12 @@
 .errorMessage{
     color: red;
 }
+.btnClass{
+    background-color: mediumspringgreen;
+    color: white;
+    font-weight: bold;
+}
+.isDone{
+    opacity: 0.4;
+    text-decoration: line-through;
+}
