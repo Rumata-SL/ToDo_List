@@ -15,11 +15,12 @@ export type TaskType = {
 type TodoListPropsType = {
     title: string,
     tasks: Array<TaskType>
-    removeTask: (id: string) => void
-    changeFilter: (value: FilterValuesType) => void
-    addTask: (title: string) => void
-    changeStatus: (taskId: string, isDone: boolean) => void
+    removeTask: (id: string, todolistId: string) => void
+    changeFilter: (value: FilterValuesType, todolistId: string ) => void
+    addTask: (title: string, todolistId: string) => void
+    changeStatus: (taskId: string, isDone: boolean, todolistId: string) => void
     filter: FilterValuesType
+    id:string
 
 }
 
@@ -31,7 +32,7 @@ const TodoList = (props: TodoListPropsType) => {
     const addTask = () => {
         const trimAddTitle = title.trim()
         if (trimAddTitle) {
-            props.addTask(trimAddTitle)
+            props.addTask(trimAddTitle, props.id)
         } else {
             setError(true)
         }
@@ -67,19 +68,19 @@ const TodoList = (props: TodoListPropsType) => {
                     <Button buttonClass={props.filter === "all" ? "btnClass" : ""}
                         title={"All"}
                         callback={() => {
-                            props.changeFilter("all")
+                            props.changeFilter("all", props.id)
                         }}
                     />
                     <Button buttonClass={props.filter === "active" ? "btnClass" : ""}
                         title={"Active"}
                         callback={() => {
-                            props.changeFilter("active")
+                            props.changeFilter("active", props.id)
                         }}
                     />
                     <Button buttonClass={props.filter === "completed" ? "btnClass" : ""}
                         title={"Completed"}
                         callback={() => {
-                            props.changeFilter("completed")
+                            props.changeFilter("completed", props.id)
                         }}
                     />
                 </div>
