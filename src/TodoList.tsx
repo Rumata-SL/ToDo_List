@@ -62,6 +62,7 @@ const TodoList = (props: TodoListPropsType) => {
                     tasks={props.tasks}
                     removeTask={props.removeTask}
                     changeStatus={props.changeStatus}
+                    todolistId={props.id}
                 />
 
                 <div>
