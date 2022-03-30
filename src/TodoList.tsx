@@ -1,9 +1,9 @@
 import React, {useState} from "react";
-import TodoListHeader from "./TodoListHeader";
-import Button from "./Button";
-import TasksList from "./TasksList";
+import {TodoListHeader} from "./TodoListHeader";
+import {Button} from "./Button";
+import {TasksList} from "./TasksList";
 import {FilterValuesType} from "./App";
-import Input from "./Input";
+import {Input} from "./Input";
 
 
 export type TaskType = {
@@ -21,11 +21,11 @@ type TodoListPropsType = {
     changeStatus: (taskId: string, isDone: boolean, todolistId: string) => void
     filter: FilterValuesType
     id: string
-    removeTodolist:(todolistId:string)=>void
+    removeTodolist: (todolistId: string) => void
 
 }
 
-const TodoList = (props: TodoListPropsType) => {
+export const TodoList = (props: TodoListPropsType) => {
 
     const [title, setTitle] = useState<string>("")
     const [error, setError] = useState<boolean>(false)
@@ -39,14 +39,15 @@ const TodoList = (props: TodoListPropsType) => {
         }
         setTitle("")
     }
-    const removeTodolist = ()=>{
+
+    const removeTodolist = () => {
         props.removeTodolist(props.id)
     }
 
     return (
         <div>
             <div>
-                <TodoListHeader title={props.title} removeTodolist={removeTodolist} />
+                <TodoListHeader title={props.title} removeTodolist={removeTodolist}/>
                 <div>
                     <Input
                         error={error}
@@ -93,5 +94,3 @@ const TodoList = (props: TodoListPropsType) => {
         </div>
     )
 }
-
-export default TodoList;

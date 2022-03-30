@@ -1,4 +1,4 @@
-import React, {ChangeEvent, KeyboardEvent} from "react";
+import React, {ChangeEvent, FC, KeyboardEvent} from "react";
 
 type InputTypeProps = {
     title: string
@@ -7,15 +7,23 @@ type InputTypeProps = {
     error: boolean
     setError: (error: boolean) => void
 }
-const Input = ({setTitle, title, ...props}: InputTypeProps) => {
+export const Input:FC<InputTypeProps> = (
+    {
+        setTitle,
+        title,
+        setError,
+        callback,
+        error
+    }
+    ) => {
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setTitle(e.currentTarget.value)
-        props.setError(false)
+        setError(false)
     }
     const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") {
-            props.callback();
+            callback();
         }
     }
 
@@ -23,9 +31,7 @@ const Input = ({setTitle, title, ...props}: InputTypeProps) => {
         <input value={title}
                onChange={onChangeHandler}
                onKeyPress={onKeyPressHandler}
-               className={props.error ? "error" : ""}
+               className={error ? "error" : ""}
         />
     );
 };
-
-export default Input;

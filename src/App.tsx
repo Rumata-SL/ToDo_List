@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import "./App.css";
-import TodoList, {TaskType} from "./TodoList";
+import {TodoList, TaskType} from "./TodoList";
 import {v1} from "uuid";
 
 export type FilterValuesType = "all" | "active" | "completed";
@@ -12,15 +12,6 @@ type TodolistType = {
 
 function App() {
 
-    /*const [tasksobj, setTask] = useState<Array<TaskType>>([
-        {id: v1(), title: "HTML&CSS", isDone: true},
-        {id: v1(), title: "JS", isDone: true},
-        {id: v1(), title: "React", isDone: false},
-        {id: v1(), title: "Redux", isDone: false},
-        {id: v1(), title: "GrahpQl", isDone: false},
-    ])*/
-
-    // const [filter, setFilter] = useState<FilterValuesType>("all");
     const removeTodolist = (todolistId:string)=>{
         let filteredTodolist = todoLists.filter(tl=> tl.id !== todolistId)
         setTodoLists(filteredTodolist)
@@ -48,7 +39,6 @@ function App() {
     }
 
     const changeFilter = (value: FilterValuesType, todolistId: string) => {
-        // setFilter(value)
         let todolist = todoLists.find(tl => tl.id === todolistId)
         if(todolist){
             todolist.filter = value;
@@ -64,18 +54,6 @@ function App() {
         }
         setTask({...tasksobj});
     }
-
-   /* let tasksForTodoList;
-    switch (filter) {
-        case "active":
-            tasksForTodoList = tasksobj.filter(t => !t.isDone);
-            break
-        case "completed":
-            tasksForTodoList = tasksobj.filter(t => t.isDone);
-            break
-        default:
-            tasksForTodoList = tasksobj;
-    }*/
 
     let todolistId1 = v1();
     let todolistId2 = v1();
@@ -115,8 +93,6 @@ function App() {
                         case "completed":
                             tasksForTodoList = tasksForTodoList.filter(t => t.isDone);
                             break
-                        // default:
-                        //     tasksForTodoList = tasksForTodoList;
                     }
                     return <TodoList
                         key={tl.id}
@@ -132,15 +108,6 @@ function App() {
                     />
                 })
             }
-            {/*<TodoList
-                title={"What to learn"}
-                tasksobj={tasksForTodoList}
-                removeTask={removeTask}
-                changeFilter={changeFilter}
-                addTask={addTask}
-                changeStatus={changeStatus}
-                filter={filter}
-            />*/}
         </div>
     );
 }

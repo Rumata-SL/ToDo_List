@@ -1,11 +1,11 @@
 import React from "react";
-import Button from "./Button";
+import {Button} from "./Button";
 
 type TodoListHeaderPropsType = {
     title: string
     removeTodolist:()=>void
 }
-const TodoListHeader = (props: TodoListHeaderPropsType) => {
+export const TodoListHeader = (props: TodoListHeaderPropsType) => {
     return (
         <div>
             <h3>
@@ -15,5 +15,3 @@ const TodoListHeader = (props: TodoListHeaderPropsType) => {
         </div>
     );
 }
-
-export default TodoListHeader;

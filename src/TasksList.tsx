@@ -1,6 +1,6 @@
 import React, {ChangeEvent, FC} from "react";
 import {TaskType} from "./TodoList";
-import Button from "./Button";
+import {Button} from "./Button";
 
 type TodoListInputProps = {
     tasks: Array<TaskType>
@@ -9,7 +9,7 @@ type TodoListInputProps = {
     todolistId:string
 }
 
-const TasksList: FC<TodoListInputProps> = (
+export const TasksList: FC<TodoListInputProps> = (
     {
         tasks,
         removeTask,
@@ -37,5 +37,3 @@ const TasksList: FC<TodoListInputProps> = (
         </div>
     );
 };
-
-export default TasksList;
