@@ -5,13 +5,13 @@ type ButtonPropsType = {
     callback: () => void
     buttonClass?: string
 }
-export const Button:FC<ButtonPropsType> = (
+export const Button: FC<ButtonPropsType> = (
     {
         title,
         callback,
         buttonClass
     }
-    ) => {
+) => {
     const onClickHandler = () => {
         callback()
     }

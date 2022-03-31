@@ -7,7 +7,7 @@ type InputTypeProps = {
     error: boolean
     setError: (error: boolean) => void
 }
-export const Input:FC<InputTypeProps> = (
+export const Input: FC<InputTypeProps> = (
     {
         setTitle,
         title,
@@ -15,7 +15,7 @@ export const Input:FC<InputTypeProps> = (
         callback,
         error
     }
-    ) => {
+) => {
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setTitle(e.currentTarget.value)

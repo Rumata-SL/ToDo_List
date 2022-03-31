@@ -4,11 +4,11 @@ import {Button} from "./Button";
 
 
 type AddItemFormPropsType = {
-    addTask: (title: string, todolistId: string) => void
-    id: string
+    addItem: (title: string) => void
+
 
 }
-export const AddItemForm:FC<AddItemFormPropsType> = ({addTask, id}) => {
+export const AddItemForm: FC<AddItemFormPropsType> = ({addItem}) => {
 
     const [title, setTitle] = useState<string>("");
 
@@ -17,7 +17,7 @@ export const AddItemForm:FC<AddItemFormPropsType> = ({addTask, id}) => {
     const addTaskTitle = () => {
         const trimAddTitle = title.trim()
         if (trimAddTitle) {
-            addTask(trimAddTitle, id)
+            addItem(trimAddTitle)
         } else {
             setError(true)
         }
