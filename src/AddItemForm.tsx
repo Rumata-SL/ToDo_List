@@ -1,54 +1,43 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from "react";
+import React, {ChangeEvent, FC, KeyboardEvent, useState} from "react";
 import {Input} from "./Input";
 import {Button} from "./Button";
 
 
 type AddItemFormPropsType = {
-    addTask:(title: string, todolistId: string)=>void
-    id:string
+    addTask: (title: string, todolistId: string) => void
+    id: string
 
 }
-export const AddItemForm  = (props: AddItemFormPropsType ) => {
+export const AddItemForm:FC<AddItemFormPropsType> = ({addTask, id}) => {
 
-     const [title, setTitle] = useState<string>("");
+    const [title, setTitle] = useState<string>("");
 
-     const [error, setError] = useState<boolean>(false);
+    const [error, setError] = useState<boolean>(false);
 
-     /*const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-         setTitle(e.currentTarget.value)
-         setError(false)
-     }*/
-     /*const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-         if (e.key === "Enter") {
-             props.callback();
-         }
-     }*/
+    const addTaskTitle = () => {
+        const trimAddTitle = title.trim()
+        if (trimAddTitle) {
+            addTask(trimAddTitle, id)
+        } else {
+            setError(true)
+        }
+        setTitle("")
+    }
 
-
-         const addTask = () => {
-             const trimAddTitle = title.trim()
-             if (trimAddTitle) {
-                 props.addTask(trimAddTitle, props.id)
-             } else {
-                 setError(true)
-             }
-             setTitle("")
-         }
-
-         return (
-             <div>
-                 <Input
-                     title={title}
-                     setTitle={setTitle}
-                     error={error}
-                     setError={setError}
-                     callback={addTask}
-                 />
-                 <Button
-                     title={"+"}
-                     callback={addTask}
-                 />
-                 {error && <div className={"errorMessage"}>Title to required</div>}
-             </div>
-         )
-     }
+    return (
+        <div>
+            <Input
+                title={title}
+                setTitle={setTitle}
+                error={error}
+                setError={setError}
+                callback={addTaskTitle}
+            />
+            <Button
+                title={"+"}
+                callback={addTaskTitle}
+            />
+            {error && <div className={"errorMessage"}>Title to required</div>}
+        </div>
+    )
+}
