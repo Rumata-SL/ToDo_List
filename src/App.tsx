@@ -71,18 +71,18 @@ function App() {
 
     let [tasksobj, setTask] = useState<TaskObjType>({
         [todolistId1]: [
-            {id: v1(), title: "HTML&CSS", isDone: true},
-            {id: v1(), title: "JS", isDone: true},
-            {id: v1(), title: "React", isDone: false},
-            {id: v1(), title: "Redux", isDone: false},
-            {id: v1(), title: "GrahpQl", isDone: false}
-        ],
-        [todolistId2]: [
             {id: v1(), title: "Mahabharata", isDone: true},
             {id: v1(), title: "Sovereign", isDone: true},
             {id: v1(), title: "Dialogs", isDone: false},
             {id: v1(), title: "Faust", isDone: false},
             {id: v1(), title: "Generation P", isDone: false}
+        ],
+        [todolistId2]: [
+            {id: v1(), title: "HTML&CSS", isDone: true},
+            {id: v1(), title: "JS", isDone: true},
+            {id: v1(), title: "React", isDone: false},
+            {id: v1(), title: "Redux", isDone: false},
+            {id: v1(), title: "GrahpQl", isDone: false}
         ]
     })
 
@@ -102,6 +102,7 @@ function App() {
     return (
         <div className="App">
             <div className={"header"}>
+                <h1>Create ToDoList</h1>
                 <AddItemForm addItem={addTodoList}/>
             </div>
             <div className={"main"}>

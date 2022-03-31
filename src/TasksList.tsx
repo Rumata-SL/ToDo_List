@@ -1,6 +1,7 @@
 import React, {ChangeEvent, FC} from "react";
 import {TaskType} from "./TodoList";
 import {Button} from "./Button";
+import {EditableSpan} from "./EditableSpan";
 
 type TodoListInputProps = {
     tasks: Array<TaskType>
@@ -23,7 +24,8 @@ export const TasksList: FC<TodoListInputProps> = (
         return (
             <li key={t.id} className={t.isDone ? "isDone" : ""}>
                 <input type="checkbox" checked={t.isDone} onChange={onChangeHandler}/>
-                <span>{t.title}</span>
+                <EditableSpan title={t.title}/>
+                {/*<span>{t.title}</span>*/}
                 <Button title={"X"} callback={onClickRemoveTask}/>
             </li>
         )
