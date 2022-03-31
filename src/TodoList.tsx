@@ -45,7 +45,7 @@ export const TodoList = (props: TodoListPropsType) => {
     }
 
     return (
-        <div>
+        <div className={"wrapper"}>
             <div>
                 <TodoListHeader title={props.title} removeTodolist={removeTodolist}/>
                 <div>

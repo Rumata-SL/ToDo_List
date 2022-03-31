@@ -3,7 +3,7 @@ import {Button} from "./Button";
 
 type TodoListHeaderPropsType = {
     title: string
-    removeTodolist:()=>void
+    removeTodolist: () => void
 }
 export const TodoListHeader = (props: TodoListHeaderPropsType) => {
     return (
