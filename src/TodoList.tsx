@@ -3,7 +3,8 @@ import {TodoListHeader} from "./TodoListHeader";
 import {Button} from "./Button";
 import {TasksList} from "./TasksList";
 import {FilterValuesType} from "./App";
-import {Input} from "./Input";
+// import {Input} from "./Input";
+import {AddItemForm} from "./AddItemForm";
 
 
 export type TaskType = {
@@ -27,10 +28,10 @@ type TodoListPropsType = {
 
 export const TodoList = (props: TodoListPropsType) => {
 
-    const [title, setTitle] = useState<string>("")
-    const [error, setError] = useState<boolean>(false)
+    /*const [title, setTitle] = useState<string>("")
+    const [error, setError] = useState<boolean>(false)*/
 
-    const addTask = () => {
+   /* const addTask = () => {
         const trimAddTitle = title.trim()
         if (trimAddTitle) {
             props.addTask(trimAddTitle, props.id)
@@ -38,7 +39,7 @@ export const TodoList = (props: TodoListPropsType) => {
             setError(true)
         }
         setTitle("")
-    }
+    }*/
 
     const removeTodolist = () => {
         props.removeTodolist(props.id)
@@ -48,7 +49,10 @@ export const TodoList = (props: TodoListPropsType) => {
         <div className={"wrapper"}>
             <div>
                 <TodoListHeader title={props.title} removeTodolist={removeTodolist}/>
-                <div>
+
+                <AddItemForm id={props.id}  addTask={props.addTask}/>
+
+                {/*<div>
                     <Input
                         error={error}
                         title={title}
@@ -61,7 +65,7 @@ export const TodoList = (props: TodoListPropsType) => {
                         callback={addTask}
                     />
                     {error && <div className={"errorMessage"}>Title to required</div>}
-                </div>
+                </div>*/}
 
                 < TasksList
                     tasks={props.tasks}
