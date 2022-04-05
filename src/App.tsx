@@ -17,58 +17,6 @@ type TaskObjType = {
 }
 
 function App() {
-
-    const removeTodolist = (todolistId: string) => {
-        let filteredTodolist = todoLists.filter(tl => tl.id !== todolistId)
-        setTodoLists(filteredTodolist)
-        delete tasksobj[todolistId]
-        setTask({...tasksobj})
-    }
-
-    /*const removeTask = ((todolistId: string, id: string) => {
-        let tasks = tasksobj[todolistId]
-        let filteredTasks = tasks.filter(t => t.id !== id)
-        tasksobj[todolistId] = filteredTasks
-        setTask({...tasksobj})
-    })*/
-
-    const removeTask = (todolistId: string, id: string) => {
-        setTask({...tasksobj, [todolistId]: tasksobj[todolistId].filter(t => t.id !== id)})
-    }
-
-    const addTask = (todolistId: string, title: string) => {
-        let newTask: TaskType = {
-            id: v1(),
-            title,
-            isDone: false
-        }
-        /*let tasks = tasksobj[todolistId]
-        let newTasks = [task, ...tasks]
-        tasksobj[todolistId] = newTasks*/
-        setTask({...tasksobj, [todolistId]: [newTask, ...tasksobj[todolistId]]})
-    }
-
-    /*const changeFilter = (value: FilterValuesType, todolistId: string) => {
-        let todolist = todoLists.find(tl => tl.id === todolistId)
-        if (todolist) {
-            todolist.filter = value;
-            setTodoLists([...todoLists])
-        }
-    }*/
-
-    const changeFilter = (todolistId: string, value: FilterValuesType) => {
-        setTodoLists(todoLists.map(filtered => filtered.id === todolistId ? {...filtered, filter: value} : filtered))
-    }
-
-    const changeStatus = (todolistId: string, taskId: string, isDone: boolean) => {
-        /*let tasks = tasksobj[todolistId]
-        let task = tasks.find(t => t.id === taskId);
-        if (task) {
-            task.isDone = !task.isDone
-        }*/
-        setTask({...tasksobj, [todolistId]: tasksobj[todolistId].map(t => t.id === taskId ? {...t, isDone} : t)});
-    }
-
     let todolistId1 = v1();
     let todolistId2 = v1();
 
@@ -94,10 +42,38 @@ function App() {
         ]
     })
 
+    const removeTodolist = (todolistId: string) => {
+        let filteredTodolist = todoLists.filter(tl => tl.id !== todolistId)
+        setTodoLists(filteredTodolist)
+        delete tasksobj[todolistId]
+        setTask({...tasksobj})
+    }
+
+    const removeTask = (todolistId: string, id: string) => {
+        setTask({...tasksobj, [todolistId]: tasksobj[todolistId].filter(t => t.id !== id)})
+    }
+
+    const changeFilter = (todolistId: string, value: FilterValuesType) => {
+        setTodoLists(todoLists.map(filtered => filtered.id === todolistId ? {...filtered, filter: value} : filtered))
+    }
+
+    const changeStatus = (todolistId: string, taskId: string, isDone: boolean) => {
+        setTask({...tasksobj, [todolistId]: tasksobj[todolistId].map(t => t.id === taskId ? {...t, isDone} : t)});
+    }
+
+    const addTask = (todolistId: string, title: string) => {
+        let newTask: TaskType = {
+            id: v1(),
+            title,
+            isDone: false
+        }
+        setTask({...tasksobj, [todolistId]: [newTask, ...tasksobj[todolistId]]})
+    }
+
     const addTodoList = (title: string) => {
         let todoList: TodolistType = {
             id: v1(),
-            title: title,
+            title,
             filter: "all",
         }
         setTodoLists([todoList, ...todoLists])
@@ -105,6 +81,12 @@ function App() {
             ...tasksobj,
             [todoList.id]: []
         })
+    }
+
+    const changeTaskTitle = (todolistId:string, taskId:string, newValue:string)=>{
+        setTask({...tasksobj, [todolistId]: tasksobj[todolistId].map(el=>el.id === taskId
+                ? {...el, title:newValue}
+                : el)})
     }
 
     return (
@@ -137,6 +119,8 @@ function App() {
                             changeStatus={changeStatus}
                             filter={tl.filter}
                             removeTodolist={removeTodolist}
+                            changeTaskTitle={changeTaskTitle}
+
                         />
                     })
                 }
