@@ -1,16 +1,24 @@
-import React from "react";
+import React, {FC} from "react";
 import {Button} from "./Button";
+import {EditableSpan} from "./EditableSpan";
 
 type TodoListHeaderPropsType = {
     title: string
     removeTodolist: () => void
+    changeTodoListTitle:(title:string)=>void
 }
-export const TodoListHeader = (props: TodoListHeaderPropsType) => {
+export const TodoListHeader: FC<TodoListHeaderPropsType> = (
+    {
+        title,
+        removeTodolist,
+        changeTodoListTitle
+    }
+) => {
     return (
         <div>
             <h3>
-                {props.title}
-                <Button title={"X"} callback={props.removeTodolist}/>
+                <EditableSpan title={title} onChange={changeTodoListTitle}/>
+                <Button title={"X"} callback={removeTodolist}/>
             </h3>
         </div>
     );
