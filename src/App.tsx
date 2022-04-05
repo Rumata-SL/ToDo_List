@@ -25,21 +25,21 @@ function App() {
         setTask({...tasksobj})
     }
 
-    /*const removeTask = ((id: string, todolistId: string) => {
+    const removeTask = ((todolistId: string, id: string) => {
         let tasks = tasksobj[todolistId]
         let filteredTasks = tasks.filter(t => t.id !== id)
         tasksobj[todolistId] = filteredTasks
         setTask({...tasksobj})
-    })*/
-
-    const removeTask = ((id: string, todolistId: string) => {
-        /*let tasks = tasksobj[todolistId]
-        let filteredTasks = tasks.filter(t => t.id !== id)
-        tasksobj[todolistId] = filteredTasks*/
-        setTask({...tasksobj, })
     })
 
-    const addTask = (title: string, todolistId: string) => {
+    /*const removeTask = ((todolistId: string, id: string) => {
+        /!*let tasks = tasksobj[todolistId]
+        let filteredTasks = tasks.filter(t => t.id !== id)
+        tasksobj[todolistId] = filteredTasks*!/
+        setTask({...tasksobj, })
+    })*/
+
+    const addTask = (todolistId: string, title: string) => {
         let task: TaskType = {
             id: v1(),
             title,
@@ -59,11 +59,11 @@ function App() {
         }
     }*/
 
-    const changeFilter = (value: FilterValuesType, todolistId: string) => {
+    const changeFilter = (todolistId: string, value: FilterValuesType) => {
         setTodoLists(todoLists.map(filtered=> filtered.id === todolistId ? {...filtered, filter:value}: filtered))
     }
 
-    const changeStatus = (taskId: string, isDone: boolean, todolistId: string) => {
+    const changeStatus = (todolistId: string, taskId: string, isDone: boolean) => {
         let tasks = tasksobj[todolistId]
         let task = tasks.find(t => t.id === taskId);
         if (task) {
