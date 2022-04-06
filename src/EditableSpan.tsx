@@ -6,7 +6,7 @@ type EditableSpanPropsType = {
 }
 export const EditableSpan: FC<EditableSpanPropsType> = ({title, onChange}) => {
 
-    const [newtitle, setNewTitle] = useState<string>("");
+    const [newTitle, setNewTitle] = useState<string>("");
     const [editMode, setEditMode] = useState<boolean>(false)
 
 
@@ -23,13 +23,13 @@ export const EditableSpan: FC<EditableSpanPropsType> = ({title, onChange}) => {
 
     const activateViewMode = () => {
         setEditMode(false)
-        onChange(newtitle)
+        onChange(newTitle)
     }
 
 
     return (
         editMode
-            ? <input onBlur={activateViewMode} value={newtitle} onChange={onChangeTitleHandler} autoFocus/>
+            ? <input onBlur={activateViewMode} value={newTitle} onChange={onChangeTitleHandler} autoFocus/>
             : <span onDoubleClick={activateEditMode}>{title}</span>
     )
 }

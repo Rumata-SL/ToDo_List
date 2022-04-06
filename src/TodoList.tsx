@@ -46,7 +46,8 @@ export const TodoList = (props: TodoListPropsType) => {
                 <TodoListHeader
                     title={props.title}
                     removeTodolist={removeTodolist}
-                    changeTodoListTitle={changeTodoListTitle}/>
+                    changeTodoListTitle={changeTodoListTitle}
+                />
 
                 <AddItemForm addItem={addItem}/>
 

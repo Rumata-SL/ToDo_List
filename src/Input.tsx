@@ -7,6 +7,7 @@ type InputTypeProps = {
     error: boolean
     setError: (error: boolean) => void
 }
+
 export const Input: FC<InputTypeProps> = (
     {
         setTitle,
