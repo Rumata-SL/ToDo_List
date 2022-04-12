@@ -43,8 +43,10 @@ function App() {
     })
 
     const removeTodolist = (todolistId: string) => {
-        let filteredTodolist = todoLists.filter(tl => tl.id !== todolistId);
-        setTodoLists(filteredTodolist);
+        // let filteredTodolist = todoLists.filter(tl => tl.id !== todolistId);
+        // setTodoLists(filteredTodolist);
+
+        setTodoLists(todoLists.filter(tl => tl.id !== todolistId))
         delete tasksObj[todolistId];
         setTask({...tasksObj});
     }

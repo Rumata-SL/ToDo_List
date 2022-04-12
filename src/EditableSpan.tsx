@@ -2,7 +2,7 @@ import React, {ChangeEvent, FC, useState} from "react";
 
 type EditableSpanPropsType = {
     title: string
-    onChange:(newValue:string)=>void
+    onChange: (newValue: string) => void
 }
 export const EditableSpan: FC<EditableSpanPropsType> = ({title, onChange}) => {
 
