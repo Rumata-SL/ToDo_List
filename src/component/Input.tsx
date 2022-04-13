@@ -8,7 +8,7 @@ type InputTypeProps = {
     setError: (error: boolean) => void
 }
 
-export const Input: FC<InputTypeProps> = (
+const Input: FC<InputTypeProps> = (
     {
         setTitle,
         title,
@@ -36,3 +36,4 @@ export const Input: FC<InputTypeProps> = (
         />
     );
 };
+// export default Input

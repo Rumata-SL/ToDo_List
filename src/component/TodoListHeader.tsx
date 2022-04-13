@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import {Button} from "./Button";
+// import {Button} from "./Button";
 import {EditableSpan} from "./EditableSpan";
 
 type TodoListHeaderPropsType = {
@@ -18,7 +18,10 @@ export const TodoListHeader: FC<TodoListHeaderPropsType> = (
         <div>
             <h3>
                 <EditableSpan title={title} onChange={changeTodoListTitle}/>
-                <Button title={"X"} callback={removeTodolist}/>
+                <button onClick={removeTodolist}>X</button>
+
+
+                {/*<Button title={"X"} callback={removeTodolist}/>*/}
             </h3>
         </div>
     );

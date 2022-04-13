@@ -5,7 +5,7 @@ type ButtonPropsType = {
     callback: () => void
     buttonClass?: string
 }
-export const Button: FC<ButtonPropsType> = (
+const Button: FC<ButtonPropsType> = (
     {
         title,
         callback,
@@ -20,3 +20,4 @@ export const Button: FC<ButtonPropsType> = (
     );
 };
 
+// export default Button
