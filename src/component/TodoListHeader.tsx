@@ -1,6 +1,8 @@
 import React, {FC} from "react";
 // import {Button} from "./Button";
 import {EditableSpan} from "./EditableSpan";
+import {IconButton} from "@mui/material";
+import {Delete} from "@mui/icons-material";
 
 type TodoListHeaderPropsType = {
     title: string
@@ -16,13 +18,16 @@ export const TodoListHeader: FC<TodoListHeaderPropsType> = (
 ) => {
     return (
         <div>
-            <h3>
+            <>
                 <EditableSpan title={title} onChange={changeTodoListTitle}/>
-                <button onClick={removeTodolist}>X</button>
+                <IconButton onClick={removeTodolist} color={"success"}>
+                    <Delete />
+                </IconButton>
+                {/*<button onClick={removeTodolist}>X</button>*/}
 
 
                 {/*<Button title={"X"} callback={removeTodolist}/>*/}
-            </h3>
+            </>
         </div>
     );
 }

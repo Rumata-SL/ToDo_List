@@ -2,6 +2,8 @@ import React, {ChangeEvent, FC} from "react";
 import {TaskType} from "./TodoList";
 // import {Button} from "./Button";
 import {EditableSpan} from "./EditableSpan";
+import {Checkbox, IconButton} from "@mui/material";
+import {Delete} from "@mui/icons-material";
 
 type TodoListInputProps = {
     tasks: Array<TaskType>
@@ -33,22 +35,25 @@ export const TasksList: FC<TodoListInputProps> = (
         }
 
         return (
-            <li key={t.id} className={t.isDone ? "isDone" : ""}>
-                <input type="checkbox" checked={t.isDone} onChange={onChangeStatusHandler}/>
+            <div key={t.id} className={t.isDone ? "isDone" : ""}>
+                <Checkbox checked={t.isDone} onChange={onChangeStatusHandler}  color="secondary"/>
                 <EditableSpan title={t.title} onChange={onChangeTitleHandler}/>
-                <button onClick={onClickRemoveTask}>X</button>
+                <IconButton onClick={onClickRemoveTask} color={"error"}>
+                    <Delete />
+                </IconButton>
+                {/*<button onClick={onClickRemoveTask}>X</button>*/}
 
                 {/*<span>{t.title}</span>*/}
                 {/*<Button title={"X"} callback={onClickRemoveTask}/>*/}
-            </li>
+            </div>
         )
     })
 
     return (
         <div>
-            <ul>
+
                 {tasksJSXElements}
-            </ul>
+
         </div>
     );
 };

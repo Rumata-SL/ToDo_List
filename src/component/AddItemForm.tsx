@@ -1,4 +1,6 @@
 import React, {ChangeEvent, FC, KeyboardEvent, useState} from "react";
+import {IconButton, TextField} from "@mui/material";
+import {AddBox} from "@mui/icons-material";
 /*import {Input} from "./Input";
 import {Button} from "./Button";*/
 
@@ -11,21 +13,22 @@ export const AddItemForm: FC<AddItemFormPropsType> = ({addItem}) => {
 
     const [title, setTitle] = useState<string>("");
 
-    const [error, setError] = useState<boolean>(false);
+    // const [error, setError] = useState<boolean>(false);
+    let [error, setError] = useState<string | null>(null)
 
     const addTaskTitle = () => {
         const trimAddTitle = title.trim()
         if (trimAddTitle) {
             addItem(trimAddTitle)
         } else {
-            setError(true)
+            setError("Title to required")
         }
         setTitle("")
     }
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setTitle(e.currentTarget.value)
-        setError(false)
+        setError(null)
 
     }
     const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -35,14 +38,20 @@ export const AddItemForm: FC<AddItemFormPropsType> = ({addItem}) => {
     }
     return (
         <div>
-            <input
+            <TextField
                 value={title}
                 onChange={onChangeHandler}
                 onKeyPress={onKeyPressHandler}
-                className={error ? "error" : ""}
+                error={!!error}
+                variant={"outlined"}
+                size={"small"}
+                label="Title"
+                helperText={error}
+                // className={error ? "error" : ""}
             />
-            <button onClick={addTaskTitle}>+</button>
-            {error && <div className={"errorMessage"}>Title to required</div>}
+            <IconButton size={"medium"} color={"primary"} onClick={addTaskTitle}><AddBox fontSize={"medium"}/></IconButton>
+            {/*<button onClick={addTaskTitle}>+</button>*/}
+            {/*{error && <div className={"errorMessage"}>Title to required</div>}*/}
 
 
             {/*<Input
