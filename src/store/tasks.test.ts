@@ -30,4 +30,5 @@ test("test reducer", ()=>{
         n:500
     }
     expect(salaryReducer(salary,sumAction)).toBe(1200)
+
 })
