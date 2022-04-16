@@ -2,6 +2,8 @@ import {FilterValuesType, TodolistType} from "../App";
 import {v1} from "uuid";
 
 
+
+
 type ActionsType =
     ReturnType<typeof RemoveTodolistAC>
     | ReturnType<typeof AddTodolistlistAC>
