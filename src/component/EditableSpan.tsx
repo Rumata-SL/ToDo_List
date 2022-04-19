@@ -13,7 +13,6 @@ export const EditableSpan: FC<EditableSpanPropsType> = ({title, onChange}) => {
 
     const onChangeTitleHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setNewTitle(e.currentTarget.value)
-        // setError(false)
     }
 
     const activateEditMode = () => {

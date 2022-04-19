@@ -63,6 +63,7 @@ test("correct todolist chould change its name", () => {
     const endState = todolistsReducer(startState, ChangeTodolistTitleAC(todolistId2, newTodolistTitle))
 
     expect(endState.length).toBe(3)
+
     expect(endState[0].title).toBe("What to learn")
     expect(endState[1].title).toBe(newTodolistTitle)
 

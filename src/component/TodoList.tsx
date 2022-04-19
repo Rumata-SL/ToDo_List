@@ -83,40 +83,6 @@ export const TodoList = (props: TodoListPropsType) => {
                         color={"secondary"}>Completed
                     </Button>
 
-                    {/*<button onClick={() => {
-                        props.changeFilter(props.id, "all",)
-                    }} className={props.filter === "all" ? "btnClass" : ""}>All
-                    </button>
-
-                    <button onClick={() => {
-                        props.changeFilter(props.id, "active")
-                    }} className={props.filter === "active" ? "btnClass" : ""}>Active
-                    </button>
-
-                    <button onClick={() => {
-                        props.changeFilter(props.id, "completed")
-                    }} className={props.filter === "completed" ? "btnClass" : ""}>Completed
-                    </button>*/}
-
-                    {/*    Универсальные кнопки*/}
-                    {/*<Button buttonClass={props.filter === "all" ? "btnClass" : ""}
-                            title={"All"}
-                            callback={() => {
-                                props.changeFilter(props.id, "all", )
-                            }}
-                    />
-                    <Button buttonClass={props.filter === "active" ? "btnClass" : ""}
-                            title={"Active"}
-                            callback={() => {
-                                props.changeFilter(props.id, "active")
-                            }}
-                    />
-                    <Button buttonClass={props.filter === "completed" ? "btnClass" : ""}
-                            title={"Completed"}
-                            callback={() => {
-                                props.changeFilter(props.id, "completed")
-                            }}
-                    />*/}
                 </div>
             </div>
         </div>

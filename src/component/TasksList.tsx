@@ -22,6 +22,7 @@ export const TasksList: FC<TodoListInputProps> = (
         changeTaskTitle
     }
 ) => {
+
     const tasksJSXElements = tasks.map(t => {
 
         const onClickRemoveTask = () => removeTask(todolistId, t.id)
