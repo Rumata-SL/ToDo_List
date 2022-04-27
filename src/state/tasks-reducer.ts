@@ -2,19 +2,14 @@ import {TaskObjType,} from "../App";
 
 
 type ActionsType =
-    ReturnType<typeof removeTascAC>
-    | ReturnType<typeof addTascAC>
+    ReturnType<typeof removeTaskAC>
+    | ReturnType<typeof addTaskAC>
     | ReturnType<typeof changeTaskStatusAC>
     | ReturnType<typeof changeTaskTitleAC>
 
 export const tasksReducer = (state: TaskObjType, action: ActionsType): TaskObjType => {
     switch (action.type) {
         case "REMOVE_TASK":
-            /*const stateCopy = {...state}
-            const task = state[action.todolistId]
-            const filteredTask = task.filter(t => t.id !== action.taskId)
-            stateCopy[action.todolistId] = filteredTask
-            return stateCopy*/
             return {...state, [action.todolistId]: state[action.todolistId].filter(t=> t.id !== action.taskId)}
         case "ADD_TASK":
             return {...state, [action.todolistId]: [{id: "4",title:action.title, isDone:true}, ...state[action.todolistId]]}
@@ -31,7 +26,7 @@ export const tasksReducer = (state: TaskObjType, action: ActionsType): TaskObjTy
     }
 }
 
-export const removeTascAC = (taskId: string, todolistId: string,) => {
+export const removeTaskAC = (taskId: string, todolistId: string,) => {
     return {
         type: "REMOVE_TASK",
         taskId: taskId,
@@ -39,7 +34,7 @@ export const removeTascAC = (taskId: string, todolistId: string,) => {
     } as const
 }
 
-export const addTascAC = (todolistId:string, newTitle: string) => {
+export const addTaskAC = (todolistId:string, newTitle: string) => {
     return {
         type: "ADD_TASK",
         todolistId,
