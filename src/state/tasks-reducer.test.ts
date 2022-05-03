@@ -15,8 +15,8 @@ test('correct task should be deleted from correct array', ()=>{
             {id: "3", title: "React", isDone: false},
         ]
     }
-
-    const endState = tasksReducer(startState, removeTaskAC("2","todolistId2"))
+     let action = removeTaskAC("todolistId2","2")
+    const endState = tasksReducer(startState, action)
 
     expect(endState["todolistId1"].length).toBe(3)
     expect(endState["todolistId2"].length).toBe(2)
