@@ -1,4 +1,4 @@
-import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC, tasksReducer} from "./tasks-reducer";
+import {addTaskAC, changeStatusAC, changeTaskTitleAC, removeTaskAC, tasksReducer} from "./tasks-reducer";
 import {TaskObjType} from "../App";
 import {addTodolistAC, removeTodolistAC} from "./todolists-reducer";
 
@@ -57,7 +57,7 @@ test('status of specified task should be changed', ()=>{
         ]
     }
 
-    const endState = tasksReducer(startState, changeTaskStatusAC("todolistId2","2", false))
+    const endState = tasksReducer(startState, changeStatusAC("todolistId2","2", false))
 
     expect(endState["todolistId2"][1].isDone).toBeFalsy()
     expect(endState["todolistId2"][1].title).toBe("JS")
