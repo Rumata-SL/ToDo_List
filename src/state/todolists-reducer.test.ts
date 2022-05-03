@@ -44,7 +44,7 @@ test("correct todolist chould be added", () => {
 
     expect(endState.length).toBe(4)
     expect(endState[0].title).toBe(newTodolistTitle)
-    expect(endState[0].filter).toBe("active")
+    expect(endState[0].filter).toBe("all")
 })
 
 test("correct todolist chould change its name", () => {

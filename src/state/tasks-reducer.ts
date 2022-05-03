@@ -1,11 +1,10 @@
 
 import {
     AddTodolistActionType,
-    RemoveTodolistActionType, todolistId1,
-    todolistId2
+    RemoveTodolistActionType,
 } from "./todolists-reducer";
 import {v1} from "uuid";
-import {TaskStateType, TodolistType} from "../AppWithRedux";
+import {TaskStateType} from "../AppWithRedux";
 
 type RemoveTaskActionType = ReturnType<typeof removeTaskAC>
 type AddTaskActionType = ReturnType<typeof addTaskAC>
@@ -20,32 +19,26 @@ type ActionsType =
     | AddTodolistActionType
     | RemoveTodolistActionType
 
-const initialState:TaskStateType = {
-    [todolistId1]: [
+const initialState:TaskStateType = {}
+    /*[todolistId1]: [
         {id: v1(), title: "Mahabharata", isDone: true},
         {id: v1(), title: "Sovereign", isDone: true},
         {id: v1(), title: "Dialogs", isDone: false},
         {id: v1(), title: "Faust", isDone: false},
         {id: v1(), title: "Generation P", isDone: false}
-    ],
-    [todolistId2]: [
+    ],*/
+    /*[todolistId2]: [
         {id: v1(), title: "HTML&CSS", isDone: true},
         {id: v1(), title: "JS", isDone: true},
         {id: v1(), title: "React", isDone: false},
         {id: v1(), title: "Redux", isDone: false},
         {id: v1(), title: "GrahpQl", isDone: false}
-    ]
-}
+    ]*/
+
 
 export const tasksReducer = (state: TaskStateType = initialState, action: ActionsType): TaskStateType => {
     switch (action.type) {
         case "REMOVE_TASK":
-            /*const copyState = {...state};
-            const arrayTasks = state[action.todolistId];
-            const filteredTasks = arrayTasks.filter(t => t.id !== action.taskId);
-            copyState[action.todolistId] = filteredTasks
-            return copyState*/
-
         return {...state, [action.todolistId]: state[action.todolistId].filter(t => t.id !== action.taskId)}
         case "ADD_TASK":
             return {
@@ -67,16 +60,12 @@ export const tasksReducer = (state: TaskStateType = initialState, action: Action
                     : el)
             }
         case "ADD-TODOLIST":
-            /*const stateCopy = {...state}
-            stateCopy[action.todolistId] = []
-            return stateCopy*/
             return {...state, [action.todolistId]: []}
         case "REMOVE-TODOLIST":
             const stateCopy = {...state}
             delete stateCopy[action.todolistId]
             return stateCopy
         default:
-            // throw new Error(" I don't understand this action type")
             return state
     }
 }
