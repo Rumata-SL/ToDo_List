@@ -36,37 +36,37 @@ function AppWithRedux() {
 
     const removeTask = useCallback((todolistId: string, taskId: string) => {
         dispatch(removeTaskAC(todolistId, taskId))
-    },[])
+    },[dispatch])
 
     const addTask = useCallback((todolistId: string, newTitle: string) => {
         dispatch(addTaskAC(todolistId, newTitle)
         )
-    },[])
+    },[dispatch])
 
     const changeStatus = useCallback((todolistId: string, taskId: string, isDone: boolean) => {
         dispatch(changeStatusAC(todolistId, taskId, isDone))
-    },[])
+    },[dispatch])
 
     const changeTaskTitle = useCallback((todolistId: string, taskId: string, title: string) => {
         dispatch(changeTaskTitleAC(todolistId, taskId, title))
-    },[])
+    },[dispatch])
 
 
     const changeFilter = useCallback((todolistId: string, filter: FilterValuesType) => {
         dispatch(changeFilterAC(todolistId, filter))
-    },[])
+    },[dispatch])
 
     const removeTodolist = useCallback((todolistId: string) => {
         dispatch(removeTodolistAC(todolistId))
-    },[])
+    },[dispatch])
 
     const changeTodoListTitle = useCallback((todolistID: string, title: string) => {
         dispatch(changeTodolistTitleAC(todolistID, title))
-    },[])
+    },[dispatch])
 
     const addTodoList = useCallback((title: string) => {
         dispatch(addTodolistAC(title))
-    },[])
+    },[dispatch])
 
     return (
         <div className="App">
@@ -77,16 +77,16 @@ function AppWithRedux() {
             <div className={"main"}>
 
                 {
-                    todoLists.map((tl) => {
+                    todoLists.map(tl => {
                         let tasksForTodoList = tasks[tl.id];
-                        /*switch (tl.filter) {
+                        switch (tl.filter) {
                             case "active":
                                 tasksForTodoList = tasksForTodoList.filter(t => !t.isDone);
                                 break
                             case "completed":
                                 tasksForTodoList = tasksForTodoList.filter(t => t.isDone);
                                 break
-                        }*/
+                        }
                         return <TodoList
                             key={tl.id}
                             id={tl.id}

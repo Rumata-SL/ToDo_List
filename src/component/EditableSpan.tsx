@@ -1,11 +1,11 @@
-import React, {ChangeEvent, FC, useState} from "react";
+import React, {ChangeEvent, FC, useCallback, useState} from "react";
 import {TextField} from "@mui/material";
 
 type EditableSpanPropsType = {
     title: string
     onChange: (newValue: string) => void
 }
-export const EditableSpan: FC<EditableSpanPropsType> = ({title, onChange}) => {
+export const EditableSpan: FC<EditableSpanPropsType> = React.memo(({title, onChange}) => {
 
     const [newTitle, setNewTitle] = useState<string>("");
     const [editMode, setEditMode] = useState<boolean>(false)
@@ -21,10 +21,10 @@ export const EditableSpan: FC<EditableSpanPropsType> = ({title, onChange}) => {
 
     }
 
-    const activateViewMode = () => {
+    const activateViewMode = useCallback(() => {
         setEditMode(false)
         onChange(newTitle)
-    }
+    },[onChange,newTitle])
 
 
     return (
@@ -33,4 +33,4 @@ export const EditableSpan: FC<EditableSpanPropsType> = ({title, onChange}) => {
                          size={"small"}/>
             : <span onDoubleClick={activateEditMode}>{title}</span>
     )
-}
+})

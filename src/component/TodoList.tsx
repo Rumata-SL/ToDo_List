@@ -33,9 +33,18 @@ export const TodoList = React.memo((props: TodoListPropsType) => {
 
     const removeTodolist = useCallback(() => {
         props.removeTodolist(props.id)
-    },[])
+    }, [props.removeTodolist, props.id])
 
-    let tasksForTodoList = props.tasks
+
+    const addItem = useCallback((title: string) => {
+        props.addTask(props.id, title)
+    }, [props.addTask, props.id])
+
+    const changeTodoListTitle = useCallback((newTitle: string) => {
+        props.changeTodoListTitle(props.id, newTitle)
+    }, [props.changeTodoListTitle, props.id])
+
+    /*let tasksForTodoList = props.tasks
     switch (props.filter) {
         case "active":
             tasksForTodoList = props.tasks.filter(t => !t.isDone);
@@ -43,17 +52,7 @@ export const TodoList = React.memo((props: TodoListPropsType) => {
         case "completed":
             tasksForTodoList = props.tasks.filter(t => t.isDone);
             break
-    }
-
-    const addItem = useCallback((title: string) => {
-        props.addTask(props.id, title)
-    },[])
-
-    const changeTodoListTitle = useCallback((newTitle: string) => {
-        props.changeTodoListTitle(props.id, newTitle)
-    },[])
-
-
+    }*/
     return (
         <div className={"wrapper"}>
             <div className={"wrapperBox"}>
@@ -65,13 +64,18 @@ export const TodoList = React.memo((props: TodoListPropsType) => {
 
                     <AddItemForm addItem={addItem}/>
 
-                    < TasksList
-                        tasks={props.tasks}
+
+                    {props.tasks.map(t => < TasksList
+                        // tasks={props.tasks}
+                        key={t.id}
+                        tasks={t}
                         removeTask={props.removeTask}
                         changeStatus={props.changeStatus}
                         todolistId={props.id}
                         changeTaskTitle={props.changeTaskTitle}
-                    /></div>
+                    />)}
+
+                </div>
 
                 <div className={"buttonsBox"}>
                     <Button
