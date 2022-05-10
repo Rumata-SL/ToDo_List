@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useCallback} from "react";
 import {TodoListHeader} from "./TodoListHeader";
 // import {Button} from "./Button";
 import {TasksList} from "./TasksList";
@@ -28,17 +28,30 @@ type TodoListPropsType = {
 
 }
 
-export const TodoList = (props: TodoListPropsType) => {
+export const TodoList = React.memo((props: TodoListPropsType) => {
+    console.log("TodoList")
 
-    const removeTodolist = () => {
+    const removeTodolist = useCallback(() => {
         props.removeTodolist(props.id)
+    },[])
+
+    let tasksForTodoList = props.tasks
+    switch (props.filter) {
+        case "active":
+            tasksForTodoList = props.tasks.filter(t => !t.isDone);
+            break
+        case "completed":
+            tasksForTodoList = props.tasks.filter(t => t.isDone);
+            break
     }
-    const addItem = (title: string) => {
+
+    const addItem = useCallback((title: string) => {
         props.addTask(props.id, title)
-    }
-    const changeTodoListTitle = (newTitle: string) => {
+    },[])
+
+    const changeTodoListTitle = useCallback((newTitle: string) => {
         props.changeTodoListTitle(props.id, newTitle)
-    }
+    },[])
 
 
     return (
@@ -87,4 +100,4 @@ export const TodoList = (props: TodoListPropsType) => {
             </div>
         </div>
     )
-}
+})

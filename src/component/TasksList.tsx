@@ -13,7 +13,7 @@ type TodoListInputProps = {
     changeTaskTitle:(todolistId:string, taskId:string, newValue:string)=>void
 }
 
-export const TasksList: FC<TodoListInputProps> = (
+export const TasksList: FC<TodoListInputProps> = React.memo((
     {
         tasks,
         removeTask,
@@ -57,4 +57,4 @@ export const TasksList: FC<TodoListInputProps> = (
 
         </div>
     );
-};
+});
