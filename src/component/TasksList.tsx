@@ -24,10 +24,6 @@ export const TasksList: FC<TodoListInputProps> = React.memo((
     }
 ) => {
 
-
-    // const tasksJSXElements = tasks.map(t => {
-
-
         const onClickRemoveTask = useCallback(() => removeTask(todolistId, tasks.id),[removeTask, todolistId, tasks.id])
 
         const onChangeStatusHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
@@ -53,12 +49,4 @@ export const TasksList: FC<TodoListInputProps> = React.memo((
             </div>
 
         )
-
-    // )
-
-    /*return (
-        <div>
-                {tasksJSXElements}
-        </div>
-    );*/
 });

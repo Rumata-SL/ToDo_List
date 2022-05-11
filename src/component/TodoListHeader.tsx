@@ -7,8 +7,9 @@ import {Delete} from "@mui/icons-material";
 type TodoListHeaderPropsType = {
     title: string
     removeTodolist: () => void
-    changeTodoListTitle:(title:string)=>void
+    changeTodoListTitle: (title: string) => void
 }
+
 export const TodoListHeader: FC<TodoListHeaderPropsType> = (
     {
         title,
@@ -21,11 +22,9 @@ export const TodoListHeader: FC<TodoListHeaderPropsType> = (
             <>
                 <EditableSpan title={title} onChange={changeTodoListTitle}/>
                 <IconButton onClick={removeTodolist} color={"success"}>
-                    <Delete />
+                    <Delete/>
                 </IconButton>
                 {/*<button onClick={removeTodolist}>X</button>*/}
-
-
                 {/*<Button title={"X"} callback={removeTodolist}/>*/}
             </>
         </div>

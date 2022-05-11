@@ -29,7 +29,6 @@ export type TaskStateType = {
 }
 
 function AppWithRedux() {
-    console.log("AppWithRedux")
     const dispatch = useDispatch()
     const todoLists = useSelector<AppRootState, Array<TodolistType>>(state=>state.todolist);
     const tasks = useSelector<AppRootState, TaskStateType>(state=>state.tasks);
@@ -78,15 +77,6 @@ function AppWithRedux() {
 
                 {
                     todoLists.map(tl => {
-                        // let tasksForTodoList = tasks[tl.id];
-                        /*switch (tl.filter) {
-                            case "active":
-                                tasksForTodoList = tasksForTodoList.filter(t => !t.isDone);
-                                break
-                            case "completed":
-                                tasksForTodoList = tasksForTodoList.filter(t => t.isDone);
-                                break
-                        }*/
                         return <TodoList
                             key={tl.id}
                             id={tl.id}

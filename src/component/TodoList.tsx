@@ -29,17 +29,16 @@ type TodoListPropsType = {
 }
 
 export const TodoList = React.memo((props: TodoListPropsType) => {
-    console.log("TodoList")
 
     let onAllClickHandler = useCallback(() => {
         props.changeFilter(props.id, "all")
-    },[])
+    }, [])
     const onActiveClickHandler = useCallback(() => {
         props.changeFilter(props.id, "active")
-    },[])
+    }, [])
     const onCompletedClickHandler = useCallback(() => {
         props.changeFilter(props.id, "completed")
-    },[])
+    }, [])
 
     const removeTodolist = useCallback(() => {
         props.removeTodolist(props.id)
@@ -75,7 +74,6 @@ export const TodoList = React.memo((props: TodoListPropsType) => {
                     <AddItemForm addItem={addItem}/>
 
                     {tasksForTodoList.map(t => < TasksList
-                        // tasks={props.tasks}
                         key={t.id}
                         tasks={t}
                         removeTask={props.removeTask}
