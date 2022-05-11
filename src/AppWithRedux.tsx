@@ -78,20 +78,20 @@ function AppWithRedux() {
 
                 {
                     todoLists.map(tl => {
-                        let tasksForTodoList = tasks[tl.id];
-                        switch (tl.filter) {
+                        // let tasksForTodoList = tasks[tl.id];
+                        /*switch (tl.filter) {
                             case "active":
                                 tasksForTodoList = tasksForTodoList.filter(t => !t.isDone);
                                 break
                             case "completed":
                                 tasksForTodoList = tasksForTodoList.filter(t => t.isDone);
                                 break
-                        }
+                        }*/
                         return <TodoList
                             key={tl.id}
                             id={tl.id}
                             title={tl.title}
-                            tasks={tasksForTodoList}
+                            tasks={tasks[tl.id]}
                             removeTask={removeTask}
                             changeFilter={changeFilter}
                             addTask={addTask}
