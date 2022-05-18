@@ -38,6 +38,6 @@ let initialGlobalState = {
 
 export const storyBookStore = legacy_createStore(rootReducer, initialGlobalState as AppRootState );
 
-export const ReduxStoreProviderDecorator=(storyFN:any)=>{
+export const ReduxStoreProviderDecorator=(storyFN:()=> React.ReactNode)=>{
     return <Provider store={storyBookStore}> {storyFN()} </Provider>
 }
