@@ -12094,7 +12094,7 @@ __metadata:
     storybook-dark-mode: ^1.1.0
     typescript: ~4.7.2
     uuid: ^8.3.2
-    webpack: ^5.72.1
+    webpack: latest
   languageName: unknown
   linkType: soft
 
@@ -19789,7 +19789,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack@npm:>=4.43.0 <6.0.0, webpack@npm:^5.64.4, webpack@npm:^5.72.1, webpack@npm:^5.9.0":
+"webpack@npm:>=4.43.0 <6.0.0, webpack@npm:^5.64.4, webpack@npm:^5.9.0, webpack@npm:latest":
   version: 5.72.1
   resolution: "webpack@npm:5.72.1"
   dependencies:
