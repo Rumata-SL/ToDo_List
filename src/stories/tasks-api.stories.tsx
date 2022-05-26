@@ -1,35 +1,47 @@
 import React, {useEffect, useState} from "react"
-import axios from "axios";
+
 import {todolistsApi} from "../api/todolistApi";
 
 export default {
-    title: "API TODOLIST"
+    title: "API TASK"
 }
 
-export const GetTodolist = () => {
+export const GetTasks = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
-// здесь мы будем делать запрос и ответ закидывать в стейт.
-// который в виде строки будем отображать в div-ке
-            todolistsApi.getTodolist()
+            todolistsApi.getTasks("e63d39e1-5a76-4574-b3a5-5cc2bcc61413")
             .then((res) => {
                 setState(res.data);
             })
     }, [])
     return <div> {JSON.stringify(state)}</div>
 }
-export const CreateTodolist =
+
+export const DeleteTasks =
     () => {
         const [state, setState] = useState<any>(null)
         useEffect(() => {
-            todolistsApi.createTodolist("Sergey")
+            todolistsApi.deleteTask("0817d241-4a64-4cfa-a9e8-b385c5c5b514", "2341")
                 .then((res) => {
                     setState(res.data);
                 })
         }, [])
         return <div> {JSON.stringify(state)}</div>
     }
-export const DeleteTodolist =
+
+/*
+export const CreateTasks =
+    () => {
+        const [state, setState] = useState<any>(null)
+        useEffect(() => {
+            todolistsApi.createTasks()
+                .then((res) => {
+                    setState(res.data);
+                })
+        }, [])
+        return <div> {JSON.stringify(state)}</div>
+    }
+export const DeleteTasks =
     () => {
         const [state, setState] = useState<any>(null)
         useEffect(() => {
@@ -41,7 +53,7 @@ export const DeleteTodolist =
         }, [])
         return <div> {JSON.stringify(state)}</div>
     }
-export const UpdateTodolistTitle =
+export const UpdateTasks =
     () => {
         const [state, setState] = useState<any>(null)
         useEffect(() => {
@@ -53,4 +65,5 @@ export const UpdateTodolistTitle =
         }, [])
         return <div> {JSON.stringify(state)}</div>
     }
+*/
 
