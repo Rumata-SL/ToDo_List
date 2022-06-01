@@ -16,7 +16,7 @@ export const GetTasks = () => {
     return <div> {JSON.stringify(state)}</div>
 }
 
-export const DeleteTasks = () => {
+/*export const DeleteTasks = () => {
     const [state, setState] = useState<any>(null)
 
     const deleteTask = ()=>{
@@ -41,8 +41,8 @@ export const CreateTasks = () => {
             })
     }, [])
     return <div> {JSON.stringify(state)}</div>
-}
-export const UpdateTasks = () => {
+}*/
+/*export const UpdateTasks = () => {
         const [state, setState] = useState<any>(null)
         useEffect(() => {
             todolistsApi.updateTask("b303f2fb-2963-4946-93cf-fb8b886c6cfe","239b0861-b8f7-486b-90ea-7d6c82d79144", "hello")
@@ -51,7 +51,7 @@ export const UpdateTasks = () => {
                 })
         }, [])
         return <div> {JSON.stringify(state)}</div>
-    }
+    }*/
 
 
 /*
